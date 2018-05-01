@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<div class="jumbotron container" style="padding: 0%;">
+<h1>Tutorials</h1>
+    <% @tutorials.each do |tutorial| %>
+      <div class="row featurette">
+          <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading"><a href="/tutoriales/series/sopa-de-tomates/"> <%= tutorial.title %></a><span class="text-muted">1 Tutoriales</span></h2>
+          <p><strong><%= tutorial.slug %></strong><%= tutorial.category %></p>
+          <p class="lead"><%= tutorial.contenido %></p>
+          </div>
+          <div class="col-md-5 col-md-pull-7">
+              <div class="embed-responsive embed-responsive-16by9">
+                      <iframe src="https://www.youtube.com/embed/IeYGfM32Iqs" frameborder="0" class="embed-responsive-item"></iframe>
+              </div>        
+          </div>
+      </div>
+    <% end %>
+
+
+</div>
+
+
+<br>
+
+<%= link_to 'New Tutorial', new_tutorial_path %>

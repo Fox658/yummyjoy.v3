@@ -1,0 +1,22 @@
+    <div class="jumbotron" style="padding: 0%;" >
+    
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div style="height: 60%;">
+    <div style="background-image: url('static/media/img/thumb-1920-653606.jpg'); height: 100%;">
+        <div class="container">
+          <h1 style="color:#fff;">Bienvenidos al Blog de YummyJoy!</h1>
+          <p style="color:#fff;">Esta es una pagina dedicada al recestas de comida de todo tipo en donde podras conocer recetas nuevas en mis secciones de Post y Tutoriales!!</p>
+          <p><a class="btn btn-primary btn-lg" href="/about/" role="button">Mas sobre el tema &raquo;</a></p>
+        </div>
+      </div>
+    </div>
+
+
+<br>
+<li><%= link_to "Sign Up", new_user_registration_path %></li>
+<li><%= link_to "Sign In", new_user_session_path %></li>
+<li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+
+<br>
+<li><%= link_to "Chats",  rooms_show_path%></li>
+<li><%= link_to "Tutoriales",  tutorials_path%></li>

@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+  resources :tutorials
+  get 'welcome/index'
+  root to: 'welcome#index'
+
+
   devise_for :users
-  root to: 'rooms#show'
+  # root to: 'rooms#show'
+  get 'rooms/show'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
