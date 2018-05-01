@@ -8,7 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
     <link href="http://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <%# <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> %>
   </head>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -20,20 +20,21 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">YummyJoy's Bake blog</a>
+          <a class="navbar-brand" href="<%= welcome_index_path %>">YummyJoy's Bake blog</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             
-              <li class="active"><a href="/">Home</a></li>
-              <li class=""><a href="/tutoriales/series/">Tutoriales</a></li>
-              <li class=""><a href="/articles/">Blog</a></li>
-              <li class=""><a href="/chatrooms/chats/">Chat</a></li>
+              <li class="active"><a href="<%= welcome_index_path %>">Home</a></li>
+              <li class=""><a href="<%= tutorials_path %>">Tutoriales</a></li>
+              <%# <li class=""><a href="/articles/">Blog</a></li> %>
+              <li class=""><a href="<%= rooms_show_path %>">Chat</a></li>
             
           </ul>
           <ul>
           <div class="nav navbar-nav navbar-right">
             
+            <% unless user_signed_in?%>
               <li>
                 <div class="form-group navbar-form">
                   <a href="<%=new_user_session_path%>"><button class="btn btn-success">Log In</button> </a>
@@ -44,13 +45,21 @@
                   <a href="<%=new_user_registration_path%>"><button class="btn btn-default">Sign Up</button> </a>
                 </div>
               </li>
+              <% end %>
+              <% if user_signed_in?%>
+               <li>
+                <div class="form-group navbar-form">
+                   <span class="logout"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></span>
+                </div>
+              </li>
+              <% end %>
           </div>
           
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
-    <div class="jumbotron" style="padding: 0; margin:-5.5px 0 0 0;">
+  
   
     <body>
       <%= yield %>

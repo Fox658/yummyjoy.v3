@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :tutorials
   get 'welcome/index'
   root to: 'welcome#index'

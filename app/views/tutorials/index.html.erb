@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<div class="jumbotron container" style="padding: 0%;">
+
 <h1>Tutorials</h1>
     <% @tutorials.each do |tutorial| %>
       <div class="row featurette">
@@ -11,11 +11,17 @@
           </div>
           <div class="col-md-5 col-md-pull-7">
               <div class="embed-responsive embed-responsive-16by9">
-                      <iframe src="https://www.youtube.com/embed/IeYGfM32Iqs" frameborder="0" class="embed-responsive-item"></iframe>
+                      <iframe src="<%= tutorial.video %>" frameborder="0" class="embed-responsive-item"></iframe>
               </div>        
           </div>
       </div>
+
+        <%= link_to 'Ver', tutorial %>
+        <%= link_to 'Editar', edit_tutorial_path(tutorial) %>
+        <%= link_to 'Eliminar', tutorial, :method => :delete, :data => { :confirm => 'Esta Seguro?' }%>
+
     <% end %>
+
 
 
 </div>
@@ -23,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Tutorial', new_tutorial_path %>
+<%= link_to 'Nuevo', new_tutorial_path %>
